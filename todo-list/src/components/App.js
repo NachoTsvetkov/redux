@@ -1,16 +1,12 @@
 import React from 'react'
-import Footer from './Footer'
-import AddTodo from './AddToDo'
 import VisibleTodoList from '../containers/VisibleToDoList'
 
-const App = ({ match: { params } }) => {
-  return (
-    <div>
-      <AddTodo />
-      <VisibleTodoList filter={params.filter || 'SHOW_ALL'} />
-      <Footer />
-    </div>
-  )
-}
+const App = () => (
+  <div>
+    <VisibleTodoList listId="1" />
+    <VisibleTodoList listId="2" />
+    <VisibleTodoList listId="3" />
+  </div>
+)
 
 export default App
