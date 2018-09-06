@@ -1,12 +1,16 @@
 import { connect } from 'react-redux'
 import { toggleTodo } from '../actions'
 import TodoList from '../components/ToDoList'
-import { getVisibleTodos } from '../selectors'
+import { makeGetVisibleTodos } from '../selectors/todoSelectors'
 
-const mapStateToProps = (state, props) => {
-  return {
-    todos: getVisibleTodos(state, props)
+const makeMapStateToProps = () => {
+  const getVisibleTodos = makeGetVisibleTodos()
+  const mapStateToProps = (state, props) => {
+    return {
+      todos: getVisibleTodos(state, props)
+    }
   }
+  return mapStateToProps
 }
 
 const mapDispatchToProps = dispatch => {
@@ -18,7 +22,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const VisibleTodoList = connect(
-  mapStateToProps,
+  makeMapStateToProps,
   mapDispatchToProps
 )(TodoList)
 
